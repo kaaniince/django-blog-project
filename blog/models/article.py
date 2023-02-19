@@ -2,13 +2,12 @@ from django.db import models
 from autoslug import AutoSlugField
 from blog.models import CategoryModel
 from ckeditor.fields import RichTextField
-
-class ArticlesModel(models.Model):
+from blog.abstract_models import DateAbstractModel
+class ArticlesModel(DateAbstractModel):
     image=models.ImageField(upload_to='text_images')
     header=models.CharField(max_length=50)
     content=RichTextField()
-    creation_date=models.DateTimeField(auto_now_add=True)
-    edit_date=models.DateTimeField(auto_now=True)
+
     slug= AutoSlugField(populate_from='header',unique=True)
     categories=models.ManyToManyField(CategoryModel, related_name="article")
     author=models.ForeignKey('account.CustomUserModel',on_delete=models.CASCADE,related_name='articles')

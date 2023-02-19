@@ -1,11 +1,11 @@
 from django.db import models
+from blog.abstract_models import DateAbstractModel
 
-class ContactModel(models.Model):
+class ContactModel(DateAbstractModel):
     email = models.EmailField(max_length=250)
     name_surname=models.CharField(max_length=150)
     message=models.TextField()
-    creation_date=models.DateTimeField(auto_now_add=True)
-    edit_date=models.DateTimeField(auto_now=True)
+  
     class Meta:
         db_table="contact"
         verbose_name="Contact"
