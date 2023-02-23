@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
 def contact(request):
-    context={'isim':'Kaan İnce'}
+    context={
+        'key':'baslik icerik naber'
+    }
     return render(request,'pages/contact.html',context=context)

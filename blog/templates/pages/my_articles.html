@@ -1,27 +1,29 @@
-{% extends 'base.html' %} {%block title%}Anasayfa{%endblock%} {%block content%}
-{%for article in articles%}
+{% extends 'base.html' %} {%block title%}Yazılarım{%endblock%} {%block content%}
 
-<div class="card mb-3">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="{{article.image.url}}" class="img" />
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{article.header}}</h5>
-        <p class="card-text">{{article.content|safe|truncatechars_html:150}}</p>
-        <p class="card-text">
-          <small class="text-muted"
-            >Önce paylaşıldı:{{article.edit_date|timesince}}</small
-          >
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-{%empty%}
-<p>Hiç Yazı Bulunamadı!</p>
-{%endfor%}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Başlık</th>
+      <th scope="col">Güncellenme Tarihi</th>
+      <th scope="col">Aksiyonlar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for article in articles%}
+
+    <tr>
+      <th scope="row">{{article.id}}</th>
+      <td>{{article.header}}</td>
+      <td>{{article.edit_date}}</td>
+      <td>Aksiyonlar Gelecek</td>
+    </tr>
+
+    {%empty%}
+    <p>Hiç Yazı Bulunamadı!</p>
+    {%endfor%}
+  </tbody>
+</table>
 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
