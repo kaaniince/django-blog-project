@@ -8,6 +8,7 @@ django = "==4.1.7"
 django-autoslug = "*"
 pillow = "*"
 django-ckeditor = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

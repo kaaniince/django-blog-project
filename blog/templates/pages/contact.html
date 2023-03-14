@@ -1,6 +1,7 @@
-{% extends 'base.html' %} {%block title%}İletişim{%endblock%} {%block content%}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}
+İletişim {% endblock %} {% block content %}
 <form method="POST">
-  {%csrf_token%} {{form}}
-  <input type="submit" value="Gönder" />
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" class="btn btn-danger mt-3 mb-3" value="Gönder" />
 </form>
-{%endblock%}
+{% endblock %}

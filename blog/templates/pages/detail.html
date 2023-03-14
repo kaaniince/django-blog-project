@@ -11,8 +11,15 @@
         <p class="card-text">{{article.content|safe}}</p>
         <p class="card-text">
           <small class="text-muted"
-            >Önce paylaşıldı:{{article.edit_date|timesince}}</small
-          >
+            >Önce paylaşıldı:{{article.edit_date|timesince}}</small>
+          {% if request.user == article.author %}
+          
+          <p>
+            <a class="btn btn-primary" href="{% url 'update_article' slug=article.slug %}">Düzenle</a>
+            <a class="btn btn-danger" href="{% url 'delete_article' slug=article.slug %}">Sil</a>
+          </p>
+          
+          {% endif %}
         </p>
       </div>
     </div>

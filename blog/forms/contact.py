@@ -1,6 +1,6 @@
 from django import forms
-
-class ContactForm(forms.Form):
-    email = forms.EmailField(max_length=100)
-    name_surname = forms.CharField(max_length=25)
-    message=forms.CharField(widget=forms.Textarea)
+from blog.models import ContactModel
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model=ContactModel
+        fields=('name_surname','email','message')

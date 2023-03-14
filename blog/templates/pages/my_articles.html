@@ -16,7 +16,20 @@
       <th scope="row">{{article.id}}</th>
       <td>{{article.header}}</td>
       <td>{{article.edit_date}}</td>
-      <td>Aksiyonlar Gelecek</td>
+      <td>
+        <p>
+          <a
+            class="btn btn-primary"
+            href="{% url 'update_article' slug=article.slug %}"
+            >Düzenle</a
+          >
+          <a
+            class="btn btn-danger"
+            href="{% url 'delete_article' slug=article.slug %}"
+            >Sil</a
+          >
+        </p>
+      </td>
     </tr>
 
     {%empty%}
